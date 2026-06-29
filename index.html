@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Terroir &amp; Proof · 떼루아앤프루프 — A Nightly Ritual, Without the Alcohol.</title>
+  <meta name="description" content="위스키의 무드와 티의 웰니스를 담은 프리미엄 블렌딩 티. 술이 아닌 감각으로 밤을 완성하는 떼루아앤프루프." />
+  <meta name="theme-color" content="#0b0e14" />
+
+  <!-- Open Graph (이미지 자산이 준비되면 og:image 경로를 추가하세요) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Terroir & Proof · 떼루아앤프루프" />
+  <meta property="og:description" content="A Nightly Ritual, Without the Alcohol. 위스키의 무드와 티의 웰니스를 담은 프리미엄 블렌딩 티." />
+  <!-- TODO: 실제 대표 이미지가 생기면 아래 주석을 해제하고 경로를 입력하세요 -->
+  <!-- <meta property="og:image" content="./assets/og-cover.jpg" /> -->
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <!-- 은은한 필름 그레인 + 라디얼 글로우 (장식, aria-hidden) -->
+  <div class="bg-grain" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="#home" aria-label="Terroir and Proof 홈으로">
+        <span class="nav__brand-en">Terroir &amp; Proof</span>
+        <span class="nav__brand-ko">떼루아앤프루프</span>
+      </a>
+
+      <nav class="nav__menu" id="navMenu" aria-label="주요 메뉴">
+        <a href="#brand">Brand</a>
+        <a href="#ritual">Ritual</a>
+        <a href="#collection">Collection</a>
+        <a href="#taste">Taste Notes</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="home">
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="hero__eyebrow reveal" data-reveal>Premium Blending Tea</p>
+          <h1 class="hero__title">
+            <span class="reveal" data-reveal style="--d:.05s">A Nightly Ritual,</span>
+            <span class="reveal" data-reveal style="--d:.18s">Without the Alcohol.</span>
+          </h1>
+          <p class="hero__sub reveal" data-reveal style="--d:.32s">
+            위스키의 무드와 티의 웰니스를 담은 프리미엄 블렌딩 티.
+          </p>
+          <div class="hero__cta reveal" data-reveal style="--d:.46s">
+            <a class="btn btn--solid" href="#brand">브랜드 스토리 보기</a>
+            <a class="btn btn--ghost" href="#collection">제품 라인업 보기</a>
+          </div>
+        </div>
+
+        <!-- CSS 기반 추상 비주얼: 앰버빛 잔 + 우러나는 티 + 떠오르는 향 -->
+        <div class="hero__visual" aria-hidden="true">
+          <div class="glass">
+            <div class="glass__steam">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="glass__body">
+              <div class="glass__liquid"></div>
+              <div class="glass__shine"></div>
+              <div class="teabag">
+                <span class="teabag__string"></span>
+                <span class="teabag__tag"></span>
+              </div>
+            </div>
+            <div class="glass__base"></div>
+            <div class="glass__glow"></div>
+          </div>
+        </div>
+      </div>
+
+      <a class="hero__scroll" href="#brand" aria-label="아래로 스크롤">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ===================== BRAND STORY ===================== -->
+    <section class="section brand" id="brand">
+      <div class="container">
+        <p class="section__label reveal" data-reveal>Brand</p>
+        <h2 class="section__title reveal" data-reveal>술을 권하지 않는, 밤의 의식</h2>
+        <div class="brand__grid">
+          <p class="brand__lead reveal" data-reveal>
+            떼루아앤프루프는 취하기 위한 음료가 아닙니다.<br />
+            한 잔의 위스키가 남기던 분위기를, 이제는 따뜻한 티로 옮겨 담았습니다.
+          </p>
+          <div class="brand__body reveal" data-reveal>
+            <p>
+              잔을 드는 감각, 향을 음미하는 시간, 천천히 가라앉는 밤의 공기.
+              위스키를 마시는 행위의 무드를 티백 한 장으로 재해석했습니다.
+            </p>
+            <p>
+              취하지 않아도 깊어질 수 있는 밤이 있습니다.
+              떼루아앤프루프는 술이 아닌 감각으로, 나를 천천히 되찾는 시간을 제안합니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== RITUAL ===================== -->
+    <section class="section ritual" id="ritual">
+      <div class="container">
+        <p class="section__label reveal" data-reveal>Ritual</p>
+        <h2 class="section__title reveal" data-reveal>위스키 대신, 다섯 단계의 밤</h2>
+        <p class="section__intro reveal" data-reveal>
+          서두르지 않아도 좋습니다. 향과 온도로 전환되는 나만의 시간.
+        </p>
+
+        <ol class="ritual__track">
+          <li class="ritual__card reveal" data-reveal style="--d:.00s">
+            <span class="ritual__num">01</span>
+            <h3>잔을 고른다</h3>
+            <p>오늘의 기분에 어울리는 잔을 손에 쥡니다. 의식은 선택에서 시작됩니다.</p>
+          </li>
+          <li class="ritual__card reveal" data-reveal style="--d:.08s">
+            <span class="ritual__num">02</span>
+            <h3>따뜻한 물을 붓는다</h3>
+            <p>잔을 데우는 온기가 하루의 긴장을 먼저 풀어 줍니다.</p>
+          </li>
+          <li class="ritual__card reveal" data-reveal style="--d:.16s">
+            <span class="ritual__num">03</span>
+            <h3>티백을 천천히 우린다</h3>
+            <p>색이 번지는 시간을 바라봅니다. 서두를 이유가 없는 순간입니다.</p>
+          </li>
+          <li class="ritual__card reveal" data-reveal style="--d:.24s">
+            <span class="ritual__num">04</span>
+            <h3>향을 맡는다</h3>
+            <p>잔을 들어 올려 피어오르는 향을 음미합니다. 테이스팅의 시작입니다.</p>
+          </li>
+          <li class="ritual__card reveal" data-reveal style="--d:.32s">
+            <span class="ritual__num">05</span>
+            <h3>하루를 내려놓는다</h3>
+            <p>마지막 한 모금과 함께, 오늘을 가만히 마무리합니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== COLLECTION (실제 제품 3종 · products.js에서 렌더링) ===================== -->
+    <section class="section collection" id="collection">
+      <div class="container">
+        <p class="section__label reveal" data-reveal>Collection</p>
+        <h2 class="section__title reveal" data-reveal>세 가지 밤의 블렌딩</h2>
+        <p class="section__intro reveal" data-reveal>
+          제품 정보는 실제 인스타그램 자료를 기준으로만 채워집니다.
+        </p>
+
+        <!-- 카드는 js/products.js의 데이터로 자동 생성됩니다 -->
+        <div class="collection__grid" id="collectionGrid"></div>
+      </div>
+    </section>
+
+    <!-- ===================== TASTE NOTES (실제 제품 3종 기준) ===================== -->
+    <section class="section taste" id="taste">
+      <div class="container">
+        <p class="section__label reveal" data-reveal>Taste Notes</p>
+        <h2 class="section__title reveal" data-reveal>위스키처럼 읽는 테이스팅 노트</h2>
+        <p class="section__intro reveal" data-reveal>
+          Aroma · Body · Finish · Mood · Caffeine · Best Time
+        </p>
+
+        <!-- 아코디언은 js/products.js의 데이터로 자동 생성됩니다 -->
+        <div class="taste__list" id="tasteList"></div>
+      </div>
+    </section>
+
+    <!-- ===================== WELLNESS WITHOUT ALCOHOL ===================== -->
+    <section class="section wellness" id="wellness">
+      <div class="container">
+        <p class="section__label reveal" data-reveal>Wellness Without Alcohol</p>
+        <h2 class="section__title section__title--center reveal" data-reveal>
+          술 없이도, 분위기는 그대로
+        </h2>
+        <div class="wellness__grid">
+          <article class="wellness__item reveal" data-reveal style="--d:.00s">
+            <h3>무알코올</h3>
+            <p>알코올 없이 즐기는 밤. 내일을 가볍게 비워 두는 선택입니다.</p>
+          </article>
+          <article class="wellness__item reveal" data-reveal style="--d:.08s">
+            <h3>밤의 루틴</h3>
+            <p>술 없이도 분위기를 즐기는, 새로운 밤의 루틴을 제안합니다.</p>
+          </article>
+          <article class="wellness__item reveal" data-reveal style="--d:.16s">
+            <h3>향 중심 경험</h3>
+            <p>향과 온도로 전환되는 시간. 음용의 경험 그 자체에 집중합니다.</p>
+          </article>
+          <article class="wellness__item reveal" data-reveal style="--d:.24s">
+            <h3>선물이 되는 의식</h3>
+            <p>하루를 차분히 마무리하는 데 어울리는, 프리미엄 티백 선물.</p>
+          </article>
+        </div>
+        <p class="wellness__note reveal" data-reveal>
+          떼루아앤프루프는 무알코올 대체 음용 경험을 제안하는 블렌딩 티입니다.
+          의학적 효능이나 치료 효과를 주장하지 않습니다.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== CONTACT / FOOTER ===================== -->
+  <footer class="footer" id="contact">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="footer__en">Terroir &amp; Proof</span>
+        <span class="footer__ko">떼루아앤프루프</span>
+        <p class="footer__tagline">향, 온도, 잔의 무게. 당신의 밤을 위한 새로운 의식.</p>
+      </div>
+
+      <div class="footer__links">
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <!-- TODO: 실제 문의 이메일로 교체하세요 -->
+          <a href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+        <div class="footer__col">
+          <h4>Social</h4>
+          <!-- TODO: 실제 인스타그램 링크로 교체하세요 -->
+          <a href="#" rel="noopener" aria-label="Instagram (링크 준비 중)">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom container">
+      <span>© <span id="year"></span> Terroir &amp; Proof. All rights reserved.</span>
+      <span class="footer__static">Static site · GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script src="./js/products.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
