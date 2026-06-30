@@ -10,8 +10,10 @@
  *  - 확인되지 않은 정보(원재료, 효능, 가격, 용량, 카페인, 출시일)는 추정하지 말고
  *    값을 "TODO: ..." 문자열로 그대로 두세요. 화면에는 "확인 필요"로 표시됩니다.
  *  - 카페인 정보는 실제로 확인된 경우에만 입력하세요.
- *  - 이미지가 실제로 있을 때만 image 경로를 넣고, 없으면 image: null 로 두세요.
- *    (null이면 CSS 기반 프리미엄 패키지 placeholder가 자동 표시됩니다.)
+ *  - image: 지금은 분위기 전달용 임시 차(茶) 사진이 ./assets 폴더에 들어가 있습니다(무료 라이선스).
+ *    실제 제품 패키지 사진이 준비되면 ./assets/product-01.jpg 등 같은 파일을 그대로 교체하면 됩니다.
+ *    값을 null 로 두면 CSS 기반 프리미엄 패키지 placeholder가 자동 표시되고,
+ *    사진 로딩에 실패해도 자동으로 placeholder로 폴백됩니다.
  *  - 건강 효과("수면 개선", "불안 완화", "숙취 해소", "간 건강" 등) 표현 금지.
  *
  * 사용법: 아래 name/subtitle/description/notes 값을
@@ -36,7 +38,8 @@ window.PRODUCTS = [
       caffeine: "TODO: 확인된 경우에만 입력",
       bestTime: "TODO: 확인된 정보 또는 확인 불가"
     },
-    image: null, // 실제 패키지 사진이 있을 때만 "./assets/product-01.jpg" 형태로 입력
+    // 임시 차 사진(./assets, 무료 라이선스). 실제 패키지 사진이 생기면 파일을 교체하세요.
+    image: "./assets/product-01.jpg",
     status: "coming-soon" // "available" 이면 [자세히 보기], 그 외에는 [Coming Soon]
   },
   {
@@ -53,7 +56,7 @@ window.PRODUCTS = [
       caffeine: "TODO: 확인된 경우에만 입력",
       bestTime: "TODO: 확인된 정보 또는 확인 불가"
     },
-    image: null,
+    image: "./assets/product-02.jpg",
     status: "coming-soon"
   },
   {
@@ -70,7 +73,7 @@ window.PRODUCTS = [
       caffeine: "TODO: 확인된 경우에만 입력",
       bestTime: "TODO: 확인된 정보 또는 확인 불가"
     },
-    image: null,
+    image: "./assets/product-03.jpg",
     status: "coming-soon"
   }
 ];

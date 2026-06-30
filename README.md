@@ -5,6 +5,9 @@
 
 순수 **HTML / CSS / JavaScript** 정적 사이트입니다. 빌드 과정이 없으며 GitHub Pages에 바로 배포할 수 있습니다.
 
+**디자인 톤:** 밝고 깔끔한 웜 아이보리(밝은) 테마 + 실제 차(茶) 사진 기반.
+(이전의 어두운 "딥 나이트" 테마 및 CSS 일러스트 비주얼을 실사 이미지로 대체했습니다.)
+
 ## 파일 구조
 
 ```
@@ -40,7 +43,7 @@ Collection / Taste Notes 섹션이 자동으로 갱신됩니다.
 - `name`, `subtitle`, `description` → 인스타그램 자료 기반(자사몰 톤으로 재작성)
 - `notes.aroma / body / finish / mood / caffeine / bestTime` → 확인된 것만 입력, 나머지는 `TODO:` 유지
 - `notes.caffeine` → **실제로 확인된 경우에만** 입력 (확인되면 카드에 칩으로 표시)
-- `image` → 실제 패키지 사진이 있을 때만 경로(`"./assets/product-01.jpg"`) 입력. 없으면 `null` (CSS placeholder 자동 표시)
+- `image` → 현재 `./assets/product-01.jpg` 처럼 **로컬 임시 차 사진**(무료 라이선스)이 연결돼 있습니다. 실제 패키지 사진이 생기면 `assets/` 의 같은 파일을 덮어쓰면 됩니다. `null` 로 두면 CSS placeholder가 표시되며, 사진 로딩 실패 시에도 자동으로 placeholder로 폴백됩니다.
 - `status` → 판매 가능하면 `"available"`(자세히 보기), 아니면 `"coming-soon"`(Coming Soon)
 
 > `TODO:` 값은 화면에서 **흐린 글씨 + "· 확인 필요"** 로 표시되어, 미입력 항목이 한눈에 보입니다.
@@ -62,13 +65,35 @@ Collection / Taste Notes 섹션이 자동으로 갱신됩니다.
 하위 경로에서도 그대로 동작합니다. 별도 base 설정이 필요 없습니다.
 사용자/조직 페이지(`<USER>.github.io` 루트)에 올려도 동일하게 동작합니다.
 
-## 추가로 필요한 실제 자산 (현재 placeholder)
+## 이미지(사진) 안내 — 교체 방법
+
+페이지의 모든 사진은 **실제 차(茶) 사진**(무료 라이선스, 출처 표기 의무 없음)이며 `assets/` 폴더에
+내려받아 포함돼 있습니다. 외부 연결 없이 동작하는 **자급자족(self-contained)** 구조라 GitHub Pages에
+올리면 그대로 보입니다. (사진이 없거나 로딩 실패 시 우아한 placeholder로 자동 폴백)
+
+> ⚠️ 현재 사진은 분위기 전달용 **임시 스톡 사진**입니다. 가능하면 **자체 촬영본이나 실제 제품/AI 생성
+> 이미지**로 교체하세요. 교체는 `assets/` 의 해당 파일을 **같은 이름으로 덮어쓰기만** 하면 끝입니다.
+
+| 위치 | 파일 | 권장 비율 |
+| --- | --- | --- |
+| 히어로(메인 상단) | `assets/hero.jpg` | 세로 4:5 |
+| 브랜드 스토리 | `assets/brand.jpg` | 가로 4:3 |
+| 리추얼(실제 티백) | `assets/ritual.jpg` | 가로 |
+| 웰니스(사람) | `assets/wellness.jpg` | 가로 |
+| 제품 1·2·3 | `assets/product-01.jpg` ~ `product-03.jpg` | 4:3 |
+| OG 대표 이미지 | `assets/og-cover.jpg` | 1200×630 |
+
+> 파일명을 바꾸려면 히어로·브랜드·리추얼·웰니스는 `index.html` 의 `<img src>`,
+> 제품 3종은 `js/products.js` 의 `image` 값을 함께 수정하세요.
+
+## 추가로 필요한 실제 자산
 
 - [ ] 브랜드 로고 (현재 텍스트 로고로 대체)
-- [ ] 제품 패키지 이미지 3종 (현재 CSS 패키지 placeholder)
+- [ ] 제품 패키지 이미지 3종 (현재 임시 차 사진 → 실제 패키지 사진으로 교체)
+- [ ] 섹션 사진 4종(히어로·브랜드·리추얼·웰니스) (현재 임시 차 사진 → 자체 촬영/AI 이미지 권장)
 - [ ] 제품명 / 상세 설명 / 향미 노트 (현재 TODO)
 - [ ] 카페인 정보 (확인된 경우에만)
-- [ ] OG 대표 이미지 `assets/og-cover.jpg` (index.html 주석 참고)
+- [ ] OG 대표 이미지 (현재 임시 `assets/og-cover.jpg` → 자체 대표 이미지로 교체, 배포 도메인 확정 시 절대 URL 권장)
 - [ ] 실제 문의 이메일 (footer `mailto:` 교체)
 - [ ] 실제 인스타그램 링크 (footer)
 - [ ] 브랜드 컬러 확정 (css `:root` 토큰)

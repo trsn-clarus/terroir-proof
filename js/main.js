@@ -10,6 +10,7 @@
   "use strict";
 
   var products = window.PRODUCTS || [];
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* TODO 문자열인지 판별 (화면에 "확인 필요" 뱃지로 표시) */
   function isTodo(value) {
@@ -38,15 +39,23 @@
       var nameTodo = isTodo(p.name);
       var caffeineKnown = !isTodo(p.notes && p.notes.caffeine);
 
-      // 이미지가 실제로 있으면 <img>, 없으면 CSS 패키지 placeholder
-      var visual = p.image
+      // CSS 패키지 placeholder는 항상 뒤에 깔리고, 이미지가 있으면 그 위에 덮입니다.
+      // 이미지 로딩 실패 시 .pcard 에 is-failed 가 붙어 자동으로 placeholder가 노출됩니다.
+      var pkg =
+        '<div class="pcard__pkg" aria-hidden="true">' +
+          '<span class="pcard__pkg-mark">T&amp;P</span>' +
+          '<span class="pcard__pkg-line"></span>' +
+          '<span class="pcard__pkg-no">No. 0' + (i + 1) + '</span>' +
+        '</div>';
+
+      var imgAlt = isTodo(p.name) ? "떼루아앤프루프 블렌딩 티" : p.name;
+      var img = p.image
         ? '<img class="pcard__img" src="' + escapeHtml(p.image) + '" alt="' +
-            escapeHtml(safeText(p.name)) + ' 패키지" loading="lazy" />'
-        : '<div class="pcard__pkg" aria-hidden="true">' +
-            '<span class="pcard__pkg-mark">T&amp;P</span>' +
-            '<span class="pcard__pkg-line"></span>' +
-            '<span class="pcard__pkg-no">No. 0' + (i + 1) + '</span>' +
-          '</div>';
+            escapeHtml(imgAlt) + ' 이미지" loading="lazy" ' +
+            'onerror="this.closest(\'.pcard\').classList.add(\'is-failed\')" />'
+        : "";
+
+      var visual = pkg + img;
 
       var btn = p.status === "available"
         ? '<button class="btn btn--ghost btn--sm" type="button">자세히 보기</button>'
@@ -169,23 +178,128 @@
    * ---------------------------------------------------------------------- */
   function initReveal() {
     var els = document.querySelectorAll("[data-reveal]");
-    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (reduce || !("IntersectionObserver" in window)) {
+    if (reduceMotion || !("IntersectionObserver" in window)) {
       els.forEach(function (el) { el.classList.add("is-in"); });
       return;
     }
 
+    // 섹션마다 reveal 요소에 계단식 지연(--d)을 자동 부여 →
+    // 섹션에 들어설 때마다 콘텐츠가 순차적으로 "조립되듯" 등장(임팩트↑).
+    // 이미 인라인으로 --d 가 지정된 요소(히어로 문구·카드 스태거)는 그대로 둡니다.
+    var groups = document.querySelectorAll("section, .footer");
+    groups.forEach(function (group) {
+      var items = group.querySelectorAll("[data-reveal]");
+      var step = 0;
+      items.forEach(function (el) {
+        if (el.style.getPropertyValue("--d")) return; // 명시 지연 존중
+        el.style.setProperty("--d", (step * 0.09).toFixed(2) + "s");
+        step += 1;
+      });
+    });
+
+    // 슬라이드처럼 재진입할 때마다 다시 연출되도록 토글
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-in");
-          io.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) entry.target.classList.add("is-in");
+        else entry.target.classList.remove("is-in");
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" });
 
     els.forEach(function (el) { io.observe(el); });
+  }
+
+  /* -------------------------------------------------------------------------
+   * 우측 도트 내비게이션 — 현재 보고 있는 섹션 표시
+   * ---------------------------------------------------------------------- */
+  function initSlideNav() {
+    var dots = document.querySelectorAll(".slidenav__dot");
+    if (!dots.length || !("IntersectionObserver" in window)) return;
+
+    var map = {};
+    dots.forEach(function (d) { map[d.getAttribute("data-target")] = d; });
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var dot = map[entry.target.id];
+        if (!dot) return;
+        dots.forEach(function (d) { d.classList.remove("is-active"); });
+        dot.classList.add("is-active");
+      });
+    }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
+
+    Object.keys(map).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  }
+
+  /* -------------------------------------------------------------------------
+   * 패럴럭스 — 사진이 프레임 안에서 살짝 다른 속도로 움직임(깊이감)
+   * ---------------------------------------------------------------------- */
+  function initParallax() {
+    if (reduceMotion) return;
+    var els = Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
+    if (!els.length) return;
+    var ticking = false;
+
+    function update() {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        var delta = (r.top + r.height / 2) - vh / 2;
+        var f = parseFloat(el.getAttribute("data-parallax")) || 0;
+        el.style.setProperty("--py", (delta * f).toFixed(1) + "px");
+      });
+      ticking = false;
+    }
+    function onScroll() {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    update();
+  }
+
+  /* -------------------------------------------------------------------------
+   * 3D 패키지 — 천천히 회전 + 마우스 반응 (화면 밖이면 일시정지)
+   * ---------------------------------------------------------------------- */
+  function initPackage() {
+    var pkg = document.querySelector("[data-pkg]");
+    if (!pkg) return;
+    var scene = pkg.closest(".scene3d") || pkg;
+
+    if (reduceMotion) {
+      pkg.style.setProperty("--rx", "-14deg");
+      pkg.style.setProperty("--ry", "-28deg");
+      return;
+    }
+
+    var spin = 0, mx = 0, my = 0, visible = true;
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { visible = e.isIntersecting; });
+      }, { threshold: 0 }).observe(scene);
+    }
+
+    scene.addEventListener("pointermove", function (e) {
+      var r = scene.getBoundingClientRect();
+      mx = (e.clientX - r.left) / r.width - 0.5;
+      my = (e.clientY - r.top) / r.height - 0.5;
+    });
+    scene.addEventListener("pointerleave", function () { mx = 0; my = 0; });
+
+    function frame() {
+      if (visible) spin += 0.25;                 // 자동 회전 속도
+      var rx = -12 + my * -16;
+      var ry = spin + mx * 28;
+      pkg.style.setProperty("--rx", rx.toFixed(2) + "deg");
+      pkg.style.setProperty("--ry", ry.toFixed(2) + "deg");
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
   }
 
   /* -------------------------------------------------------------------------
@@ -220,8 +334,11 @@
     renderCollection();
     renderTaste();
     initNav();
-    initTilt();   // tilt는 렌더 직후 카드에 바인딩
-    initReveal(); // 동적 생성된 [data-reveal] 포함
+    initTilt();      // tilt는 렌더 직후 카드에 바인딩
+    initReveal();    // 동적 생성된 [data-reveal] 포함
+    initSlideNav();  // 우측 도트 내비 활성화
+    initParallax();  // 사진 깊이감(패럴럭스)
+    initPackage();   // 3D 패키지 회전 + 마우스 반응
   }
 
   if (document.readyState === "loading") {

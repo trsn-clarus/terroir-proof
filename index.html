@@ -7,26 +7,40 @@
   <!-- SEO -->
   <title>Terroir &amp; Proof · 떼루아앤프루프 — A Nightly Ritual, Without the Alcohol.</title>
   <meta name="description" content="위스키의 무드와 티의 웰니스를 담은 프리미엄 블렌딩 티. 술이 아닌 감각으로 밤을 완성하는 떼루아앤프루프." />
-  <meta name="theme-color" content="#0b0e14" />
+  <meta name="theme-color" content="#fbf7f1" />
 
-  <!-- Open Graph (이미지 자산이 준비되면 og:image 경로를 추가하세요) -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Terroir & Proof · 떼루아앤프루프" />
   <meta property="og:description" content="A Nightly Ritual, Without the Alcohol. 위스키의 무드와 티의 웰니스를 담은 프리미엄 블렌딩 티." />
-  <!-- TODO: 실제 대표 이미지가 생기면 아래 주석을 해제하고 경로를 입력하세요 -->
-  <!-- <meta property="og:image" content="./assets/og-cover.jpg" /> -->
+  <!-- 대표 이미지: ./assets/og-cover.jpg (자체 이미지로 교체 가능). 배포 도메인이 정해지면 절대 URL 권장 -->
+  <meta property="og:image" content="./assets/og-cover.jpg" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <!-- 한글: Pretendard(본문) · Hahmlet(제목) / 라틴: Cormorant Garamond -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Hahmlet:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body>
-  <!-- 은은한 필름 그레인 + 라디얼 글로우 (장식, aria-hidden) -->
+  <!-- 은은한 워밍 글로우 + 미세 그레인 (장식, aria-hidden) -->
   <div class="bg-grain" aria-hidden="true"></div>
   <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- ===================== SLIDE DOT NAV (PPT식 슬라이드 인디케이터) ===================== -->
+  <nav class="slidenav" aria-label="섹션 바로가기">
+    <a class="slidenav__dot is-active" href="#home" data-target="home"><span>Home</span></a>
+    <a class="slidenav__dot" href="#brand" data-target="brand"><span>Brand</span></a>
+    <a class="slidenav__dot" href="#ritual" data-target="ritual"><span>Ritual</span></a>
+    <a class="slidenav__dot" href="#collection" data-target="collection"><span>Collection</span></a>
+    <a class="slidenav__dot" href="#taste" data-target="taste"><span>Taste</span></a>
+    <a class="slidenav__dot" href="#wellness" data-target="wellness"><span>Wellness</span></a>
+    <a class="slidenav__dot" href="#contact" data-target="contact"><span>Contact</span></a>
+  </nav>
 
   <!-- ===================== NAVIGATION ===================== -->
   <header class="nav" id="nav">
@@ -69,22 +83,23 @@
           </div>
         </div>
 
-        <!-- CSS 기반 추상 비주얼: 앰버빛 잔 + 우러나는 티 + 떠오르는 향 -->
-        <div class="hero__visual" aria-hidden="true">
-          <div class="glass">
-            <div class="glass__steam">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="glass__body">
-              <div class="glass__liquid"></div>
-              <div class="glass__shine"></div>
-              <div class="teabag">
-                <span class="teabag__string"></span>
-                <span class="teabag__tag"></span>
-              </div>
-            </div>
-            <div class="glass__base"></div>
-            <div class="glass__glow"></div>
+        <!-- 실제 사진 (이미지 교체: 아래 src 의 URL 만 바꾸면 됩니다 / 자체 촬영 권장) -->
+        <div class="hero__media reveal" data-reveal style="--d:.2s">
+          <div class="media">
+            <img
+              src="./assets/hero.jpg"
+              alt="흰 주전자에서 잔으로 따라지는 따뜻한 차"
+              width="1200" height="1500"
+              fetchpriority="high"
+              data-parallax="0.03"
+              onerror="this.closest('.media').classList.add('is-failed')" />
+          </div>
+          <div class="hero__chip" aria-hidden="true">
+            <span class="hero__chip-dot"></span>
+            <span class="hero__chip-text">
+              <b>Without the Alcohol</b>
+              위스키의 무드를 담은, 취하지 않는 밤.
+            </span>
           </div>
         </div>
       </div>
@@ -100,32 +115,67 @@
         <p class="section__label reveal" data-reveal>Brand</p>
         <h2 class="section__title reveal" data-reveal>술을 권하지 않는, 밤의 의식</h2>
         <div class="brand__grid">
-          <p class="brand__lead reveal" data-reveal>
-            떼루아앤프루프는 취하기 위한 음료가 아닙니다.<br />
-            한 잔의 위스키가 남기던 분위기를, 이제는 따뜻한 티로 옮겨 담았습니다.
-          </p>
-          <div class="brand__body reveal" data-reveal>
-            <p>
-              잔을 드는 감각, 향을 음미하는 시간, 천천히 가라앉는 밤의 공기.
-              위스키를 마시는 행위의 무드를 티백 한 장으로 재해석했습니다.
+          <div class="brand__text">
+            <p class="brand__lead reveal" data-reveal>
+              떼루아앤프루프는 취하기 위한 음료가 아닙니다.<br />
+              한 잔의 위스키가 남기던 분위기를, 이제는 따뜻한 티로 옮겨 담았습니다.
             </p>
-            <p>
-              취하지 않아도 깊어질 수 있는 밤이 있습니다.
-              떼루아앤프루프는 술이 아닌 감각으로, 나를 천천히 되찾는 시간을 제안합니다.
-            </p>
+            <div class="brand__body reveal" data-reveal>
+              <p>
+                잔을 드는 감각, 향을 음미하는 시간, 천천히 가라앉는 밤의 공기.
+                위스키를 마시는 행위의 무드를 티백 한 장으로 재해석했습니다.
+              </p>
+              <p>
+                취하지 않아도 깊어질 수 있는 밤이 있습니다.
+                떼루아앤프루프는 술이 아닌 감각으로, 나를 천천히 되찾는 시간을 제안합니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- 실제 사진 (이미지 교체: src URL 변경) -->
+          <div class="brand__media media reveal" data-reveal>
+            <img
+              src="./assets/brand.jpg"
+              alt="햇살 드는 창가에서 차와 함께하는 여유로운 시간"
+              loading="lazy"
+              data-parallax="0.025"
+              onerror="this.closest('.media').classList.add('is-failed')" />
           </div>
         </div>
       </div>
     </section>
 
     <!-- ===================== RITUAL ===================== -->
-    <section class="section ritual" id="ritual">
+    <section class="section ritual section--sand" id="ritual">
       <div class="container">
         <p class="section__label reveal" data-reveal>Ritual</p>
         <h2 class="section__title reveal" data-reveal>위스키 대신, 다섯 단계의 밤</h2>
         <p class="section__intro reveal" data-reveal>
           서두르지 않아도 좋습니다. 향과 온도로 전환되는 나만의 시간.
         </p>
+
+        <!-- 실제 사진 + 설명 (이미지 교체: src URL 변경) -->
+        <div class="ritual__feature">
+          <div class="media reveal" data-reveal>
+            <img
+              src="./assets/ritual.jpg"
+              alt="실제 티백 클로즈업 — 한 장의 티백에서 시작되는 의식"
+              loading="lazy"
+              data-parallax="0.025"
+              onerror="this.closest('.media').classList.add('is-failed')" />
+          </div>
+          <div class="ritual__feature-aside reveal" data-reveal>
+            <h3>티백 한 장으로 시작되는 의식</h3>
+            <p>
+              따뜻한 물에 티백을 담그고, 색이 번져 가는 시간을 가만히 바라봅니다.
+              서두를 이유가 없는, 오롯이 나를 위한 순간입니다.
+            </p>
+            <p>
+              향이 피어오르면 잔을 들어 올립니다. 한 모금, 또 한 모금.
+              그렇게 오늘 하루를 천천히 내려놓습니다.
+            </p>
+          </div>
+        </div>
 
         <ol class="ritual__track">
           <li class="ritual__card reveal" data-reveal style="--d:.00s">
@@ -160,11 +210,35 @@
     <!-- ===================== COLLECTION (실제 제품 3종 · products.js에서 렌더링) ===================== -->
     <section class="section collection" id="collection">
       <div class="container">
-        <p class="section__label reveal" data-reveal>Collection</p>
-        <h2 class="section__title reveal" data-reveal>세 가지 밤의 블렌딩</h2>
-        <p class="section__intro reveal" data-reveal>
-          제품 정보는 실제 인스타그램 자료를 기준으로만 채워집니다.
-        </p>
+        <div class="collection__intro">
+          <!-- CSS 3D 모델: 회전하는 프리미엄 티 패키지 (마우스를 올리면 반응) -->
+          <div class="scene3d reveal reveal--fade" data-reveal aria-hidden="true">
+            <div class="package" data-pkg>
+              <span class="package__face package__face--front">
+                <span class="package__brand">Terroir<br />&amp; Proof</span>
+                <span class="package__rule"></span>
+                <span class="package__ko">떼루아앤프루프</span>
+                <span class="package__tag">Premium Blending Tea</span>
+              </span>
+              <span class="package__face package__face--back">
+                <span class="package__mono">T&amp;P</span>
+              </span>
+              <span class="package__face package__face--right"></span>
+              <span class="package__face package__face--left"></span>
+              <span class="package__face package__face--top"></span>
+              <span class="package__face package__face--bottom"></span>
+            </div>
+            <span class="scene3d__floor"></span>
+          </div>
+
+          <div class="collection__intro-text">
+            <p class="section__label reveal" data-reveal>Collection</p>
+            <h2 class="section__title reveal" data-reveal>세 가지 밤의 블렌딩</h2>
+            <p class="section__intro reveal" data-reveal style="margin-bottom:0">
+              제품 정보는 실제 인스타그램 자료를 기준으로만 채워집니다.
+            </p>
+          </div>
+        </div>
 
         <!-- 카드는 js/products.js의 데이터로 자동 생성됩니다 -->
         <div class="collection__grid" id="collectionGrid"></div>
@@ -172,7 +246,7 @@
     </section>
 
     <!-- ===================== TASTE NOTES (실제 제품 3종 기준) ===================== -->
-    <section class="section taste" id="taste">
+    <section class="section taste section--sand" id="taste">
       <div class="container">
         <p class="section__label reveal" data-reveal>Taste Notes</p>
         <h2 class="section__title reveal" data-reveal>위스키처럼 읽는 테이스팅 노트</h2>
@@ -188,10 +262,29 @@
     <!-- ===================== WELLNESS WITHOUT ALCOHOL ===================== -->
     <section class="section wellness" id="wellness">
       <div class="container">
-        <p class="section__label reveal" data-reveal>Wellness Without Alcohol</p>
-        <h2 class="section__title section__title--center reveal" data-reveal>
-          술 없이도, 분위기는 그대로
-        </h2>
+        <div class="wellness__head">
+          <!-- 실제 사진 (이미지 교체: src URL 변경) -->
+          <div class="wellness__media media reveal" data-reveal>
+            <img
+              src="./assets/wellness.jpg"
+              alt="함께 차를 나누며 시간을 보내는 사람들"
+              loading="lazy"
+              data-parallax="0.025"
+              onerror="this.closest('.media').classList.add('is-failed')" />
+          </div>
+          <div class="wellness__head-text">
+            <p class="section__label reveal" data-reveal>Wellness Without Alcohol</p>
+            <h2 class="section__title reveal" data-reveal>술 없이도, 분위기는 그대로</h2>
+            <p class="section__intro reveal" data-reveal style="margin-bottom:0">
+              알코올 없이 즐기는 밤. 향과 온도로 채워지는 시간이, 내일을 가볍게 비워 둡니다.
+            </p>
+            <p class="wellness__note reveal" data-reveal>
+              떼루아앤프루프는 무알코올 대체 음용 경험을 제안하는 블렌딩 티입니다.
+              의학적 효능이나 치료 효과를 주장하지 않습니다.
+            </p>
+          </div>
+        </div>
+
         <div class="wellness__grid">
           <article class="wellness__item reveal" data-reveal style="--d:.00s">
             <h3>무알코올</h3>
@@ -210,10 +303,6 @@
             <p>하루를 차분히 마무리하는 데 어울리는, 프리미엄 티백 선물.</p>
           </article>
         </div>
-        <p class="wellness__note reveal" data-reveal>
-          떼루아앤프루프는 무알코올 대체 음용 경험을 제안하는 블렌딩 티입니다.
-          의학적 효능이나 치료 효과를 주장하지 않습니다.
-        </p>
       </div>
     </section>
   </main>
