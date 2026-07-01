@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Terroir &amp; Proof · 떼루아앤프루프</title>
-  <meta name="description" content="위스키의 무드와 티의 웰니스를 담은 프리미엄 블렌딩 티. 술이 아닌 감각으로 밤을 완성하는 떼루아앤프루프." />
+  <meta name="description" content="위스키를 모티브로 한 프리미엄 블렌딩 티. 술을 마시지 않고도 함께 즐길 수 있는 대화의 시간, 나만의 깊은 휴식의 경험을 선사합니다." />
   <meta name="theme-color" content="#16110d" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Terroir & Proof · 떼루아앤프루프" />
-  <meta property="og:description" content="A Nightly Ritual, Without the Alcohol. 위스키의 무드와 티의 웰니스를 담은 프리미엄 블렌딩 티." />
+  <meta property="og:title" content="Terroir &amp; Proof · 떼루아앤프루프" />
+  <meta property="og:description" content="A New Paradigm of Tea and Whiskey. 위스키를 모티브로 한 프리미엄 블렌딩 티." />
   <meta property="og:image" content="./assets/og-cover.jpg" />
+
+  <link rel="icon" href="./assets/logo.jpg" type="image/jpeg" />
+  <link rel="apple-touch-icon" href="./assets/logo.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,8 +30,11 @@
   <header class="nav" id="nav">
     <div class="nav__inner">
       <a class="nav__brand" href="#home" aria-label="Terroir and Proof 홈으로">
-        <span>Terroir &amp; Proof</span>
-        <small>떼루아앤프루프</small>
+        <img class="nav__logo" src="./assets/logo.jpg" alt="T&P 로고" />
+        <span class="nav__brand-text">
+          <span>Terroir &amp; Proof</span>
+          <small>떼루아앤프루프</small>
+        </span>
       </a>
 
       <nav class="nav__menu" id="navMenu" aria-label="주요 메뉴">
@@ -46,76 +52,86 @@
   </header>
 
   <main>
+    <!-- Hero -->
     <section class="hero" id="home">
       <figure class="hero__image" aria-hidden="true">
-        <img src="./assets/hero.jpg" alt="" width="1200" height="1500" fetchpriority="high" />
+        <img src="./assets/hero.jpg" alt="" width="1080" height="1210" fetchpriority="high" />
       </figure>
       <div class="hero__veil" aria-hidden="true"></div>
 
       <div class="hero__inner">
         <p class="eyebrow reveal" data-reveal>Premium Blending Tea</p>
         <h1 class="hero__title reveal" data-reveal>Terroir<br />&amp; Proof</h1>
-        <p class="hero__subtitle reveal" data-reveal>A Nightly Ritual, Without the Alcohol.</p>
+        <p class="hero__subtitle reveal" data-reveal>A New Paradigm of Tea and Whiskey.</p>
         <p class="hero__copy reveal" data-reveal>
-          위스키 한 잔이 남기던 밀도와 밤의 무드를, 알코올 없이 따뜻한 티의 감각으로 다시 씁니다.
+          술을 마시지 않고도 함께 즐길 수 있는 대화의 시간을,<br />
+          그리고 나만의 깊은 휴식의 경험을 선사합니다.
         </p>
 
         <div class="hero__actions reveal" data-reveal>
           <a class="btn btn--cream" href="#collection">컬렉션 보기</a>
-          <a class="btn btn--outline-light" href="#ritual">리추얼 보기</a>
+          <a class="btn btn--outline-light" href="https://smartstore.naver.com/terroirnproof" target="_blank" rel="noopener">스마트스토어</a>
         </div>
 
         <dl class="hero__notes reveal" data-reveal>
-          <div><dt>Format</dt><dd>Tea Bag Ritual</dd></div>
-          <div><dt>Serve</dt><dd>Warm Evening</dd></div>
+          <div><dt>Format</dt><dd>Blending Tea Bag</dd></div>
+          <div><dt>Base</dt><dd>Black Tea</dd></div>
           <div><dt>Proof</dt><dd>0.0 Alcohol</dd></div>
         </dl>
       </div>
     </section>
 
+    <!-- Brand Statement -->
     <section class="statement" id="brand">
       <div class="container statement__grid">
         <div class="statement__copy">
           <p class="eyebrow reveal" data-reveal>Brand Thesis</p>
-          <h2 class="statement__title reveal" data-reveal>취하지 않아도, 밤은 충분히 깊어질 수 있습니다.</h2>
+          <h2 class="statement__title reveal" data-reveal>취하지 않아도,<br />밤은 충분히 깊어질 수 있습니다.</h2>
         </div>
         <div class="statement__body reveal" data-reveal>
           <p>
-            떼루아앤프루프는 술을 대신하는 음료가 아니라, 술이 만들던 장면을 다른 방식으로 완성하는 브랜드입니다.
+            떼루아앤프루프는 술을 대신하는 음료가 아니라, 위스키가 만들던 장면을 차로 다시 완성하는 브랜드입니다.
             잔을 고르고, 향을 기다리고, 한 모금의 온도로 하루의 속도를 낮추는 일.
           </p>
           <p>
-            그 시간을 위해 우리는 블렌딩 티를 하나의 리추얼로 다룹니다.
-            기능보다 분위기, 과장보다 밀도, 빠른 전환보다 천천히 도착하는 감각을 지향합니다.
+            위스키의 깊은 색감과 풍미를 담기 위해 산지별 홍차를 베이스로 선별하고,
+            섬세한 블렌딩을 통해 각 제품마다 어울리는 디테일과 깊이를 담아냈습니다.
           </p>
         </div>
       </div>
     </section>
 
+    <!-- Gallery Band -->
     <section class="gallery-band" aria-label="브랜드 이미지">
       <figure class="gallery-band__wide media reveal" data-reveal>
-        <img src="./assets/brand.jpg" alt="창가에서 차와 함께하는 조용한 시간" loading="lazy" />
+        <img src="./assets/gallery-wide.jpg" alt="창가에 쌓인 Quiet Street 박스들" loading="lazy" />
       </figure>
       <figure class="gallery-band__tall media reveal" data-reveal>
-        <img src="./assets/product-01.jpg" alt="붉은빛 차가 담긴 잔" loading="lazy" />
+        <img src="./assets/gallery-tall.jpg" alt="꽃과 함께 놓인 Quiet Street 패키지" loading="lazy" />
       </figure>
       <figure class="gallery-band__small media reveal" data-reveal>
-        <img src="./assets/product-03.jpg" alt="꽃잎과 차가 놓인 테이블" loading="lazy" />
+        <img src="./assets/gallery-small.jpg" alt="t&p 머그와 책" loading="lazy" />
       </figure>
     </section>
 
+    <!-- Ritual -->
     <section class="ritual" id="ritual">
       <div class="container ritual__grid">
         <div class="ritual__copy">
-          <p class="eyebrow reveal" data-reveal>Ritual</p>
+          <p class="eyebrow reveal" data-reveal>How To Enjoy</p>
           <h2 class="section-title reveal" data-reveal>한 잔이 아니라, 밤을 여는 순서.</h2>
           <p class="section-intro reveal" data-reveal>
-            좋은 밤은 거창한 준비보다 정확한 속도에서 시작됩니다. 차를 우리는 몇 분이 하루의 경계를 바꿉니다.
+            150–200ml의 95°C 뜨거운 물에 3분. 좋은 밤은 거창한 준비보다 정확한 속도에서 시작됩니다.
           </p>
+          <dl class="ritual__brew reveal" data-reveal>
+            <div><dt>온도</dt><dd>95°C</dd></div>
+            <div><dt>시간</dt><dd>3 min</dd></div>
+            <div><dt>용량</dt><dd>150–200 ml</dd></div>
+          </dl>
         </div>
 
         <figure class="ritual__image media reveal" data-reveal>
-          <img src="./assets/ritual.jpg" alt="티백에서 우러나는 차의 리추얼" loading="lazy" />
+          <img src="./assets/ritual.jpg" alt="위스키를 차에 더하는 순간" loading="lazy" />
         </figure>
 
         <ol class="ritual__steps reveal" data-reveal>
@@ -128,14 +144,43 @@
       </div>
     </section>
 
+    <!-- 위티 DIY Section -->
+    <section class="wisky" id="wisky">
+      <div class="container wisky__inner">
+        <div class="wisky__copy">
+          <p class="eyebrow reveal" data-reveal>위티 · Whiskey + Tea</p>
+          <h2 class="section-title reveal" data-reveal>홍차에 위스키를 더해<br />커스텀하는 나만의 DIY.</h2>
+          <p class="section-intro reveal" data-reveal>
+            복잡하지 않게, 취향은 더 확실하게. 위스키 몇 방울이 당신만의 풍미를 완성합니다.
+          </p>
+        </div>
+        <ol class="wisky__steps reveal" data-reveal>
+          <li>
+            <span class="wisky__num">Brew</span>
+            <p>티백을 충분히 우려내 차의 아로마를 깨우기</p>
+          </li>
+          <li>
+            <span class="wisky__num">Drop</span>
+            <p>위스키 몇 방울을 추가해 풍미를 더하기</p>
+          </li>
+          <li>
+            <span class="wisky__num">Customize</span>
+            <p>부담 없이, 나만의 스타일로 완성된 차 즐기기</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Collection -->
     <section class="collection" id="collection">
       <div class="container collection__head">
         <div>
-          <p class="eyebrow reveal" data-reveal>Collection</p>
-          <h2 class="section-title reveal" data-reveal>밤의 결을 따라 고른 세 가지 블렌딩.</h2>
+          <p class="eyebrow reveal" data-reveal>Collection · Quiet Street</p>
+          <h2 class="section-title reveal" data-reveal>위스키 숙성연수처럼,<br />세 가지 블렌딩.</h2>
         </div>
         <p class="section-intro reveal" data-reveal>
-          제품 사진이 준비되기 전에도 브랜드의 결이 무너지지 않도록, 컬렉션은 카탈로그형으로 차분하게 정리했습니다.
+          10Y · 12Y · NAS — 각각의 이름은 위스키의 언어로 블렌딩의 결을 표현합니다.
+          홍차 베이스에 산지별 재료를 섬세하게 더했습니다.
         </p>
       </div>
 
@@ -146,7 +191,7 @@
               <span class="package__brand">Terroir<br />&amp; Proof</span>
               <span class="package__rule"></span>
               <span class="package__ko">떼루아앤프루프</span>
-              <span class="package__tag">Premium Blending Tea</span>
+              <span class="package__tag">Quiet Street Collection</span>
             </span>
             <span class="package__face package__face--back"><span class="package__mono">T&amp;P</span></span>
             <span class="package__face package__face--right"></span>
@@ -161,6 +206,43 @@
       </div>
     </section>
 
+    <!-- Teabag Detail -->
+    <section class="detail">
+      <div class="container detail__inner">
+        <div class="detail__copy">
+          <p class="eyebrow reveal" data-reveal>Product Detail</p>
+          <h2 class="section-title reveal" data-reveal>차의 풍미와 편의성을<br />고려한 설계.</h2>
+        </div>
+        <ul class="detail__list reveal" data-reveal>
+          <li>
+            <span class="detail__label">티백 용량</span>
+            <div class="detail__bar">
+              <div class="detail__bar-fill" style="--pct:100%"></div>
+            </div>
+            <span class="detail__val">3g <small>vs 타 제품 1.5g</small></span>
+            <p>위스키 풍미를 더 진하게</p>
+          </li>
+          <li>
+            <span class="detail__label">스트링 길이</span>
+            <div class="detail__bar">
+              <div class="detail__bar-fill" style="--pct:100%"></div>
+            </div>
+            <span class="detail__val">19cm <small>vs 타 제품 13cm</small></span>
+            <p>Long String — 텀블러에도 빠지지 않게</p>
+          </li>
+          <li>
+            <span class="detail__label">티백 소재</span>
+            <div class="detail__bar">
+              <div class="detail__bar-fill" style="--pct:100%"></div>
+            </div>
+            <span class="detail__val">PLA <small>식물 유래 생분해</small></span>
+            <p>차의 향과 맛을 안정적으로 우려내도록 설계</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Taste Notes -->
     <section class="taste" id="taste">
       <div class="container taste__grid">
         <div class="taste__copy">
@@ -175,9 +257,29 @@
       </div>
     </section>
 
+    <!-- Reviews -->
+    <section class="reviews">
+      <div class="container">
+        <p class="eyebrow reveal" data-reveal style="text-align:center">Reviews</p>
+        <h2 class="reviews__title reveal" data-reveal>우리가 Terroir &amp; Proof의 차를 사랑하는 이유.</h2>
+        <div class="reviews__grid reveal" data-reveal>
+          <blockquote>
+            <p>위스키를 잘 몰라도 알콜이 없어서 즐기기 편하고, 평소에 위스키 좋아하는 사람도 재밌어해요. 호불호 없이 즐기기 좋아요.</p>
+          </blockquote>
+          <blockquote>
+            <p>친구나 연인이랑 천천히 마시기 좋아요. 자연스럽게 대화가 길어지는 느낌이랄까, 대화의 분위기도 부드럽게 올라가요.</p>
+          </blockquote>
+          <blockquote>
+            <p>취하고 싶진 않은데, 그 자리 분위기는 같이 즐기고 싶을 때 있잖아요. 그럴 때 마시면 딱이에요.</p>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wellness -->
     <section class="wellness" id="wellness">
       <figure class="wellness__image media reveal" data-reveal>
-        <img src="./assets/wellness.jpg" alt="함께 차를 나누며 시간을 보내는 사람들" loading="lazy" />
+        <img src="./assets/wellness.jpg" alt="조용한 밤, 차 한 잔과 함께하는 시간" loading="lazy" />
       </figure>
 
       <div class="container wellness__content">
@@ -185,12 +287,33 @@
         <h2 class="wellness__title reveal" data-reveal>내일을 망치지 않는 밤의 분위기.</h2>
         <div class="wellness__items reveal" data-reveal>
           <article><span>01</span><h3>Non Alcoholic</h3><p>취기 없이 무드만 남기는 저녁의 선택.</p></article>
-          <article><span>02</span><h3>Aroma First</h3><p>효능을 말하기보다 향과 온도의 경험에 집중합니다.</p></article>
+          <article><span>02</span><h3>Aroma First</h3><p>효능보다 향과 온도의 경험에 집중합니다.</p></article>
           <article><span>03</span><h3>Giftable Ritual</h3><p>혼자 보내는 밤과 선물의 장면 모두에 어울립니다.</p></article>
         </div>
         <p class="wellness__note reveal" data-reveal>
-          떼루아앤프루프는 무알코올 대체 음용 경험을 제안하는 블렌딩 티입니다. 의학적 효능이나 치료 효과를 주장하지 않습니다.
+          떼루아앤프루프는 무알코올 대용 음용 경험을 제안하는 블렌딩 티입니다. 의학적 효능이나 치료 효과를 주장하지 않습니다.
         </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <div class="container faq__inner">
+        <p class="eyebrow reveal" data-reveal>FAQ</p>
+        <dl class="faq__list reveal" data-reveal>
+          <div class="faq__item">
+            <dt>알코올이 들어 있나요?</dt>
+            <dd>아니요. 위스키를 모티브로 한 홍차로, 알코올은 포함되어 있지 않습니다.</dd>
+          </div>
+          <div class="faq__item">
+            <dt>유통기한과 보관 방법은 어떻게 되나요?</dt>
+            <dd>유통기한은 제조일로부터 최대 3년이며, 개봉 후 가급적 6개월 이내 음용을 권장합니다. 직사광선을 피해 서늘하고 건조한 곳에 밀봉 보관해 주세요.</dd>
+          </div>
+          <div class="faq__item">
+                <dt>내용량과 사용 방법은?</dt>
+            <dd>1박스에 12개입 (3g×12ea) 들어 있습니다. 95°C 뜨거운 물 150–200ml에 3분간 우려 드세요.</dd>
+          </div>
+        </dl>
       </div>
     </section>
   </main>
@@ -198,19 +321,20 @@
   <footer class="footer" id="contact">
     <div class="container footer__inner">
       <div>
+        <img class="footer__logo" src="./assets/logo.jpg" alt="T&P" />
         <span class="footer__brand">Terroir &amp; Proof</span>
         <span class="footer__ko">떼루아앤프루프</span>
-        <p>향, 온도, 잔의 무게. 당신의 밤을 위한 새로운 의식.</p>
+        <p>우리가 보낼 소중한 교류의 시간을 위해, 당신의 일상 속 안온함을 위해.</p>
       </div>
 
       <div class="footer__links">
         <div>
-          <h4>Contact</h4>
-          <a href="mailto:hello@example.com">hello@example.com</a>
+          <h4>Shop</h4>
+          <a href="https://smartstore.naver.com/terroirnproof" target="_blank" rel="noopener">네이버 스마트스토어</a>
         </div>
         <div>
           <h4>Social</h4>
-          <a href="#" rel="noopener" aria-label="Instagram 링크 준비 중">Instagram</a>
+          <a href="https://www.instagram.com/terroir.n.proof_official/" target="_blank" rel="noopener" aria-label="Instagram @terroir.n.proof_official">Instagram</a>
         </div>
       </div>
     </div>

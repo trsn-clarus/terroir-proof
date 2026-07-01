@@ -37,7 +37,7 @@
         : "";
 
       var action = p.status === "available"
-        ? '<button class="btn btn--ghost btn--sm" type="button">자세히 보기</button>'
+        ? '<a class="btn btn--ghost btn--sm" href="' + escapeHtml(p.buyUrl || "#") + '" target="_blank" rel="noopener">구매하기</a>'
         : '<span class="pcard__soon">Coming Soon</span>';
 
       return '' +
