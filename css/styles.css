@@ -408,12 +408,21 @@ main, .nav, .footer { position: relative; z-index: 1; }
   gap: 18px;
 }
 .pcard {
+  --box-face: #c85a1e;
+  --box-side: color-mix(in srgb, var(--box-face) 60%, black);
+  --box-top: color-mix(in srgb, var(--box-face) 82%, white);
+  --box-w: 120px;
+  --box-h: 160px;
+  --box-d: 34px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: #f8efe1;
   transition: transform 160ms var(--ease), border-color 160ms var(--ease), box-shadow 160ms var(--ease);
 }
+[data-accent="amber"] { --box-face: #c85a1e; }
+[data-accent="copper"] { --box-face: #d4714e; }
+[data-accent="leaf"] { --box-face: #2d1a0e; }
 .pcard:hover {
   transform: translateY(-3px);
   border-color: rgba(33, 25, 19, 0.28);
@@ -424,6 +433,7 @@ main, .nav, .footer { position: relative; z-index: 1; }
   aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #d8c9b4;
+  perspective: 900px;
 }
 .pcard__img {
   position: relative;
@@ -431,28 +441,95 @@ main, .nav, .footer { position: relative; z-index: 1; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0.68;
+  filter: saturate(0.92) contrast(0.96);
 }
 .pcard.is-failed .pcard__img { display: none; }
-.pcard__pkg {
+.pcard__box {
   position: absolute;
-  inset: 0;
-  display: grid;
-  place-content: center;
-  gap: 10px;
-  text-align: center;
-  color: rgba(33, 25, 19, 0.4);
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: var(--box-w);
+  height: var(--box-h);
+  transform: translate(-50%, -50%) rotateX(-12deg) rotateY(28deg);
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
 }
-.pcard__pkg-mark {
+.pcard__box:hover,
+.pcard:hover .pcard__box {
+  transform: translate(-50%, -50%) rotateX(-12deg) rotateY(8deg);
+}
+.pcard__box::after {
+  content: "";
+  position: absolute;
+  left: 14%;
+  right: 5%;
+  bottom: -24px;
+  height: 24px;
+  background: rgba(33, 25, 19, 0.22);
+  filter: blur(14px);
+  transform: translateZ(-30px) rotateX(90deg);
+}
+.pcard__face {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid rgba(255, 249, 238, 0.18);
+  background: var(--box-face);
+  box-shadow: inset 0 0 32px rgba(255, 249, 238, 0.08);
+  backface-visibility: hidden;
+}
+.pcard__face--front,
+.pcard__face--back {
+  width: var(--box-w);
+  height: var(--box-h);
+}
+.pcard__face--front {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 14px;
+  color: rgba(255, 249, 238, 0.92);
   font-family: var(--serif);
-  font-size: 2.1rem;
+  font-size: 1.15rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: translateZ(calc(var(--box-d) / 2));
 }
-.pcard__pkg-line {
-  width: 54px;
-  height: 1px;
-  margin-inline: auto;
-  background: var(--line);
+.pcard__face--front span:last-child {
+  align-self: flex-end;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
 }
-.pcard__pkg-no,
+.pcard__face--back {
+  background: var(--box-side);
+  transform: rotateY(180deg) translateZ(calc(var(--box-d) / 2));
+}
+.pcard__face--left,
+.pcard__face--right {
+  left: calc((var(--box-w) - var(--box-d)) / 2);
+  width: var(--box-d);
+  height: var(--box-h);
+  background: var(--box-side);
+}
+.pcard__face--left { transform: rotateY(-90deg) translateZ(calc(var(--box-w) / 2)); }
+.pcard__face--right { transform: rotateY(90deg) translateZ(calc(var(--box-w) / 2)); }
+.pcard__face--top,
+.pcard__face--bottom {
+  top: calc((var(--box-h) - var(--box-d)) / 2);
+  width: var(--box-w);
+  height: var(--box-d);
+  background: var(--box-top);
+}
+.pcard__face--top { transform: rotateX(90deg) translateZ(calc(var(--box-h) / 2)); }
+.pcard__face--bottom {
+  background: var(--box-side);
+  transform: rotateX(-90deg) translateZ(calc(var(--box-h) / 2));
+}
 .pcard__no {
   color: var(--gold);
   font-size: 0.66rem;
@@ -1074,18 +1151,24 @@ main, .nav, .footer { position: relative; z-index: 1; }
 
 /* Motion */
 .reveal {
-  opacity: 1;
-  transform: none;
-  transition: none;
+  opacity: 0;
+  transform: translateY(36px) scale(0.985);
+  filter: blur(8px);
+  transition:
+    opacity 720ms var(--ease),
+    transform 720ms var(--ease),
+    filter 720ms var(--ease);
+  will-change: opacity, transform, filter;
 }
 .reveal.is-in {
   opacity: 1;
   transform: none;
+  filter: blur(0);
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .reveal { opacity: 1; transform: none; }
+  .reveal { opacity: 1; transform: none; filter: none; }
 }
 
 /* Responsive */
@@ -1226,6 +1309,16 @@ main, .nav, .footer { position: relative; z-index: 1; }
   }
   .ritual__steps p { grid-column: 2; }
   .pcard { display: block; }
+  .pcard {
+    --box-w: 80px;
+    --box-h: 110px;
+    --box-d: 24px;
+  }
+  .pcard__face--front {
+    padding: 12px 10px;
+    font-size: 0.88rem;
+  }
+  .pcard__face--front span:last-child { font-size: 0.5rem; }
   .taste__notes,
   .wellness__items {
     grid-template-columns: 1fr;

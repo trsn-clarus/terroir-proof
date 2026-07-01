@@ -20,10 +20,15 @@
     grid.innerHTML = products.map(function (p, i) {
       var no = "No. 0" + (i + 1);
       var pkg =
-        '<div class="pcard__pkg" aria-hidden="true">' +
-          '<span class="pcard__pkg-mark">T&amp;P</span>' +
-          '<span class="pcard__pkg-line"></span>' +
-          '<span class="pcard__pkg-no">' + no + '</span>' +
+        '<div class="pcard__box" aria-hidden="true">' +
+          '<div class="pcard__face pcard__face--front">' +
+            '<span>T&amp;P</span><span>' + no + '</span>' +
+          '</div>' +
+          '<div class="pcard__face pcard__face--back"></div>' +
+          '<div class="pcard__face pcard__face--left"></div>' +
+          '<div class="pcard__face pcard__face--right"></div>' +
+          '<div class="pcard__face pcard__face--top"></div>' +
+          '<div class="pcard__face pcard__face--bottom"></div>' +
         '</div>';
 
       var img = p.image
@@ -142,15 +147,43 @@
       return;
     }
 
+    function show(el, io) {
+      el.classList.add("is-in");
+      if (io) io.unobserve(el);
+    }
+
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-in");
-        io.unobserve(entry.target);
+        show(entry.target, io);
       });
     }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
 
     els.forEach(function (el) { io.observe(el); });
+
+    function revealVisible() {
+      els.forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) show(el, io);
+      });
+    }
+
+    function revealHashTarget() {
+      if (!window.location.hash) return;
+      var target = document.getElementById(window.location.hash.slice(1));
+      if (!target) return;
+      target.querySelectorAll("[data-reveal]").forEach(function (el) { show(el, io); });
+    }
+
+    revealVisible();
+    revealHashTarget();
+    window.addEventListener("load", revealVisible, { once: true });
+    window.addEventListener("load", revealHashTarget, { once: true });
+    window.addEventListener("hashchange", revealHashTarget);
+    window.setTimeout(function () {
+      revealVisible();
+      revealHashTarget();
+    }, 180);
   }
 
   function init() {
