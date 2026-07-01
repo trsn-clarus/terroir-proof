@@ -8,3 +8,4 @@ desktop.ini
 # logs / temp
 *.log
 .tmp/
+image/
