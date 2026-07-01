@@ -17,7 +17,7 @@ window.PRODUCTS = [
       caffeine: "함유 (홍차 베이스)",
       bestTime: "After dinner"
     },
-    image: "./assets/product-01.jpg",
+    image: "./image/product_1_1840.jpg",
     status: "available",
     buyUrl: "https://smartstore.naver.com/terroirnproof/products/13317393679"
   },
@@ -35,7 +35,7 @@ window.PRODUCTS = [
       caffeine: "함유 (홍차 베이스)",
       bestTime: "Early night"
     },
-    image: "./assets/product-02.jpg",
+    image: "./image/product_2_1780.jpg",
     status: "available",
     buyUrl: "https://smartstore.naver.com/terroirnproof/products/13317393679"
   },
@@ -53,7 +53,7 @@ window.PRODUCTS = [
       caffeine: "함유 (홍차+커피 베이스)",
       bestTime: "Before bedtime"
     },
-    image: "./assets/product-03.jpg",
+    image: "./image/product_3_1780.jpg",
     status: "available",
     buyUrl: "https://smartstore.naver.com/terroirnproof/products/13317393679"
   }

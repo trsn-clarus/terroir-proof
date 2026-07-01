@@ -19,17 +19,6 @@
 
     grid.innerHTML = products.map(function (p, i) {
       var no = "No. 0" + (i + 1);
-      var pkg =
-        '<div class="pcard__box" aria-hidden="true">' +
-          '<div class="pcard__face pcard__face--front">' +
-            '<span>T&amp;P</span><span>' + no + '</span>' +
-          '</div>' +
-          '<div class="pcard__face pcard__face--back"></div>' +
-          '<div class="pcard__face pcard__face--left"></div>' +
-          '<div class="pcard__face pcard__face--right"></div>' +
-          '<div class="pcard__face pcard__face--top"></div>' +
-          '<div class="pcard__face pcard__face--bottom"></div>' +
-        '</div>';
 
       var img = p.image
         ? '<img class="pcard__img" src="' + escapeHtml(p.image) + '" alt="' +
@@ -47,7 +36,7 @@
 
       return '' +
         '<article class="pcard reveal" data-reveal data-accent="' + escapeHtml(p.accent || "amber") + '">' +
-          '<div class="pcard__visual">' + pkg + img + '</div>' +
+          '<div class="pcard__visual">' + img + '</div>' +
           '<div class="pcard__body">' +
             '<span class="pcard__no">' + no + '</span>' +
             '<h3 class="pcard__name">' + escapeHtml(p.name) + '</h3>' +
@@ -104,6 +93,9 @@
         var item = head.parentElement;
         var open = item.classList.toggle("is-open");
         head.setAttribute("aria-expanded", open ? "true" : "false");
+        if (open) {
+          item.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" });
+        }
       });
     });
   }
@@ -141,6 +133,23 @@
 
   function initReveal() {
     var els = document.querySelectorAll("[data-reveal]");
+
+    var groups = {};
+    els.forEach(function (el) {
+      var section = el.closest("section") || el.parentElement || document.body;
+      if (!section.dataset.revealGroup) {
+        section.dataset.revealGroup = "reveal-" + Object.keys(groups).length;
+      }
+      var key = section.dataset.revealGroup;
+      groups[key] = groups[key] || [];
+      groups[key].push(el);
+    });
+
+    Object.keys(groups).forEach(function (key) {
+      groups[key].forEach(function (el, i) {
+        el.style.setProperty("--reveal-delay", Math.min(i * 90, 360) + "ms");
+      });
+    });
 
     if (reduceMotion || !("IntersectionObserver" in window)) {
       els.forEach(function (el) { el.classList.add("is-in"); });
