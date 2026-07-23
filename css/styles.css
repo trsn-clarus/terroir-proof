@@ -1290,6 +1290,42 @@ main, .nav, .footer { position: relative; z-index: 1; }
   }
 }
 
+/* ===== Kinetic marquee — modern scroll-velocity ribbon =============
+ * Two serif rows drift in opposite directions and speed up with scroll
+ * velocity. Technique surfaced via 21st.dev "Scroll Velocity Text".
+ * ================================================================== */
+.kinetic {
+  padding: clamp(66px, 9vw, 132px) 0;
+  background: var(--night);
+  color: var(--cream);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.kinetic__row {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  will-change: transform;
+}
+.kinetic__row + .kinetic__row {
+  margin-top: clamp(4px, 0.8vw, 14px);
+}
+.kinetic__track {
+  flex: 0 0 auto;
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 7vw, 6.4rem);
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: 0.004em;
+  padding-right: 0.14em;
+  color: rgba(255, 249, 238, 0.9);
+}
+.kinetic__track em {
+  font-style: italic;
+  color: var(--gold);
+}
+
 /* ===== Cinematic image direction ===================================
  * Unified nocturnal grade + scroll-linked grayscale→colour + parallax.
  * JS (cinematic.js) overrides the filter live on scroll; these rules are
