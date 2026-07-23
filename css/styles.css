@@ -1390,13 +1390,6 @@ main, .nav, .footer { position: relative; z-index: 1; }
   opacity: 1;
   transform: none;
 }
-.pcard__reveal-label {
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold2);
-}
 .pcard__reveal-notes {
   display: grid;
   gap: 9px;

@@ -51,7 +51,6 @@
         .join("");
       var reveal =
         '<div class="pcard__reveal">' +
-          '<span class="pcard__reveal-label">Tasting Notes</span>' +
           '<dl class="pcard__reveal-notes">' + noteRows + "</dl>" +
         "</div>";
 
