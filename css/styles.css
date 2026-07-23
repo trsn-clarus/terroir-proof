@@ -420,7 +420,9 @@ main, .nav, .footer { position: relative; z-index: 1; }
 }
 .pcard__visual {
   position: relative;
-  aspect-ratio: 4 / 5;
+  /* Crop to the product shot only — the source images bake in a title on top
+     and a "TASTING NOTE" band at the bottom, which this framing removes. */
+  aspect-ratio: 7 / 6;
   overflow: hidden;
   border-radius: 2px;
   background: #ebe2d3;
@@ -429,13 +431,13 @@ main, .nav, .footer { position: relative; z-index: 1; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 57%;
+  object-position: center 62%;
   filter: saturate(0.96) contrast(0.98);
   transition: transform 520ms var(--ease), filter 520ms var(--ease);
 }
-.pcard[data-accent="amber"] .pcard__img { object-position: center 58%; }
-.pcard[data-accent="copper"] .pcard__img { object-position: center 56%; }
-.pcard[data-accent="leaf"] .pcard__img { object-position: center 57%; }
+.pcard[data-accent="amber"] .pcard__img { object-position: center 66%; }
+.pcard[data-accent="copper"] .pcard__img { object-position: center 58%; }
+.pcard[data-accent="leaf"] .pcard__img { object-position: center 64%; }
 .pcard:hover .pcard__img {
   transform: scale(1.03);
   filter: saturate(1.02) contrast(1.02);
