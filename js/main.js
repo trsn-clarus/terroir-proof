@@ -31,7 +31,7 @@
         : "";
 
       var action = p.status === "available"
-        ? '<a class="btn btn--ghost btn--sm" href="' + escapeHtml(p.buyUrl || "#") + '" target="_blank" rel="noopener">구매하기</a>'
+        ? '<a class="pcard__buy" href="' + escapeHtml(p.buyUrl || "#") + '" target="_blank" rel="noopener">구매하기 &rarr;</a>'
         : '<span class="pcard__soon">Coming Soon</span>';
 
       return '' +
