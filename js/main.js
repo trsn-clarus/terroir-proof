@@ -34,9 +34,30 @@
         ? '<a class="pcard__buy" href="' + escapeHtml(p.buyUrl || "#") + '" target="_blank" rel="noopener">구매하기 &rarr;</a>'
         : '<span class="pcard__soon">Coming Soon</span>';
 
+      // Hover-reveal tasting notes over the product image (21st "Product Reveal Card").
+      var notes = p.notes || {};
+      var noteRows = [
+        ["Aroma", notes.aroma],
+        ["Body", notes.body],
+        ["Finish", notes.finish],
+        ["Mood", notes.mood],
+        ["Caffeine", notes.caffeine],
+        ["Best Time", notes.bestTime]
+      ]
+        .filter(function (r) { return r[1]; })
+        .map(function (r) {
+          return "<div><dt>" + r[0] + "</dt><dd>" + escapeHtml(r[1]) + "</dd></div>";
+        })
+        .join("");
+      var reveal =
+        '<div class="pcard__reveal">' +
+          '<span class="pcard__reveal-label">Tasting Notes</span>' +
+          '<dl class="pcard__reveal-notes">' + noteRows + "</dl>" +
+        "</div>";
+
       return '' +
         '<article class="pcard reveal" data-reveal data-accent="' + escapeHtml(p.accent || "amber") + '">' +
-          '<div class="pcard__visual">' + img + '</div>' +
+          '<div class="pcard__visual" tabindex="0">' + img + reveal + '</div>' +
           '<div class="pcard__body">' +
             '<span class="pcard__no">' + no + '</span>' +
             '<h3 class="pcard__name">' + escapeHtml(p.name) + '</h3>' +

@@ -1350,3 +1350,93 @@ main, .nav, .footer { position: relative; z-index: 1; }
     transform: none !important;
   }
 }
+
+/* ===== Product card hover-reveal: tasting notes over the image ======
+ * Hover (or focus) a product image → its tasting notes rise over the photo
+ * in a staggered cascade while the image scales & dims. Notes + image show
+ * together. Technique surfaced via 21st.dev "Product Reveal Card".
+ * ================================================================== */
+.pcard__visual {
+  position: relative;
+}
+.pcard__visual:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.pcard__reveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 13px;
+  padding: 22px;
+  overflow: hidden;
+  color: var(--cream);
+  background: linear-gradient(
+    180deg,
+    rgba(11, 8, 6, 0.05) 18%,
+    rgba(11, 8, 6, 0.52) 54%,
+    rgba(11, 8, 6, 0.86)
+  );
+  -webkit-backdrop-filter: blur(1.5px);
+  backdrop-filter: blur(1.5px);
+  opacity: 0;
+  transform: translateY(8%);
+  transition: opacity 0.5s var(--ease), transform 0.6s var(--ease);
+  pointer-events: none;
+}
+.pcard:hover .pcard__reveal,
+.pcard__visual:focus-within .pcard__reveal {
+  opacity: 1;
+  transform: none;
+}
+.pcard__reveal-label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.pcard__reveal-notes {
+  display: grid;
+  gap: 8px;
+}
+.pcard__reveal-notes > div {
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  gap: 12px;
+  align-items: baseline;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.45s var(--ease), transform 0.5s var(--ease);
+}
+.pcard:hover .pcard__reveal-notes > div,
+.pcard__visual:focus-within .pcard__reveal-notes > div {
+  opacity: 1;
+  transform: none;
+}
+.pcard__reveal-notes > div:nth-child(1) { transition-delay: 0.1s; }
+.pcard__reveal-notes > div:nth-child(2) { transition-delay: 0.16s; }
+.pcard__reveal-notes > div:nth-child(3) { transition-delay: 0.22s; }
+.pcard__reveal-notes > div:nth-child(4) { transition-delay: 0.28s; }
+.pcard__reveal-notes > div:nth-child(5) { transition-delay: 0.34s; }
+.pcard__reveal-notes > div:nth-child(6) { transition-delay: 0.4s; }
+.pcard__reveal-notes dt {
+  color: var(--gold);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.pcard__reveal-notes dd {
+  font-size: 0.9rem;
+  color: rgba(255, 249, 238, 0.92);
+  line-height: 1.4;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pcard__reveal,
+  .pcard__reveal-notes > div {
+    transition-duration: 0.001ms;
+  }
+}

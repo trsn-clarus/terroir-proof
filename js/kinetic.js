@@ -45,13 +45,13 @@
     { passive: true }
   );
 
-  var BASE = 0.6; // constant drift (px/frame)
+  var BASE = 0.32; // constant drift (px/frame) — calm
 
   function frame() {
     velocity *= 0.9; // decay toward the calm base drift
     var v = velocity;
-    if (v > 60) v = 60;
-    else if (v < -60) v = -60;
+    if (v > 45) v = 45;
+    else if (v < -45) v = -45;
 
     for (var i = 0; i < state.length; i++) {
       var s = state[i];
@@ -59,7 +59,7 @@
         var t = s.row.querySelector(".kinetic__track");
         s.w = t ? t.offsetWidth : 0;
       }
-      s.x += s.dir * (BASE + v * 0.28);
+      s.x += s.dir * (BASE + v * 0.2);
       if (s.w) {
         while (s.x <= -s.w) s.x += s.w;
         while (s.x > 0) s.x -= s.w;
